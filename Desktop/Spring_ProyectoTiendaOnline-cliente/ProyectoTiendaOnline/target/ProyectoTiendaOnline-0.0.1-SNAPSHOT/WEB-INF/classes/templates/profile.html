@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="${Cliente/profile}"
+			th:text="${Cliente.email}"></a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarColor02" aria-controls="navbarColor02"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</nav>
+
+	<div class="container my-2">
+		<div class="card">
+			<div class="card-body">
+				<div th:switch="${Cliente.tipoCliente}" class="container my-5">
+					<div th:case="'1'">
+						<h3>El perfil de usuario de :</h3>
+
+						<p class="text-primary">
+							Nombre : <span class="text-dark" th:text="${Cliente.nombre}"></span>
+						</p>
+						<p class="text-primary">
+							Apellido : <span class="text-dark" th:text="${Cliente.apellido}">
+							</span>
+						</p>
+						<p class="text-primary">
+							Fecha de Nacimiento : <span class="text-dark"
+								th:text="${Cliente.fnacimiento}"> </span>
+						</p>
+						<p class="text-primary">
+							Email : <span class="text-dark" th:text="${Cliente.email}">
+							</span>
+						</p>
+						<p class="text-primary">
+							Contraseña : <span class="text-dark"
+								th:text="${Cliente.password}"></span>
+						</p>
+						<p class="text-primary">
+							Dirección : <span class="text-dark"
+								th:text="${Cliente.direccion}"></span>
+						</p>
+						<div th:if="${Cliente.tipoCliente == 1}">
+							<p class="text-primary">
+								Tipo de Cliente : <span class="text-dark">Usuario</span>
+							</p>
+						</div>
+
+						<div class="col-md-6">
+							<a class="btn btn-primary"
+								th:href="@{/Banco/create-banco/{id}(id=${Cliente.idCliente})}">Añadir
+								la cuenta bancaria</a> <a class="btn btn-primary"
+								th:href="@{/Cliente/editar-cliente/{id}(id=${Cliente.idCliente})}">Modificar
+								Datos</a>
+						</div>
+
+						<div th:switch="${listaBanco}">
+							<div th:case="null">
+								<p>No hay datos de Bancaria !</p>
+							</div>
+
+							<div th:case="*">
+								<table class="table table-striped table-responsive-md">
+									<thead>
+										<tr>
+											<th>Nombre de Banco:</th>
+											<th>Número de Tarjeta:</th>
+											<th>Titular:</th>
+											<th>Código de Seguridad:</th>
+											<th>Dirección de Factura:</th>
+											<th>Editar:</th>
+											<th>Eliminar:</th>
+										</tr>
+									</thead>
+
+									<tbody>
+										<tr th:each="Banco : ${listaBanco}">
+											<td th:text="${Banco.nombre}"></td>
+											<td th:text="${Banco.numTarjeta}"></td>
+											<td th:text="${Banco.titular}"></td>
+											<td th:text="${Banco.codSeguridad}"></td>
+											<td th:text="${Banco.dirFactura}"></td>
+											<!-- " -->
+											<td><a
+												th:href="@{/Banco/editar-banco/{id}(id=${Banco.idBanco})}"
+												class="btn btn-primary"><i
+													class="fas fa-banco-user ml-2">Editar</i></a></td>
+											<!--  -->
+											<td><a
+												th:href="@{/Banco/delete-banco/{id}(id=${Banco.idBanco})}"
+												class="btn btn-primary"><i
+													class="fas fa-user-times ml-2">Eliminar</i></a></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<div th:case="'2'">
+						<h3>El perfil de Administrador de :</h3>
+
+						<p class="text-primary">
+							Nombre : <span class="text-dark" th:text="${Cliente.nombre}"></span>
+						</p>
+						<p class="text-primary">
+							Apellido : <span class="text-dark" th:text="${Cliente.apellido}">
+							</span>
+						</p>
+						<p class="text-primary">
+							Fecha de Nacimiento : <span class="text-dark"
+								th:text="${Cliente.fnacimiento}"> </span>
+						</p>
+						<p class="text-primary">
+							Email : <span class="text-dark" th:text="${Cliente.email}">
+							</span>
+						</p>
+						<p class="text-primary">
+							Contraseña : <span class="text-dark"
+								th:text="${Cliente.password}"></span>
+						</p>
+						<p class="text-primary">
+							Dirección : <span class="text-dark"
+								th:text="${Cliente.direccion}"></span>
+						</p>
+
+						<div th:if="${Cliente.tipoCliente == 1}">
+							<p class="text-primary">
+								Tipo de Cliente : <span class="text-dark">Admin</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

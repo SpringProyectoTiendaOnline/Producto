@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<!-- Cuando utilizamos hibernate fuera de JEE, eliminar atributo name de 
+		session-factory para no obtener error JNDI -->
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/tiendaOnline</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- Ficheros de mapeo, también podemos utilizar anotaciones JPA -->
+		<mapping class="tiendaOnline.Entity.Cliente" />
+		<mapping class="tiendaOnline.Entity.Banco" />
+		<mapping class="tiendaOnline.Entity.Productos" />
+
+	</session-factory>
+</hibernate-configuration>
