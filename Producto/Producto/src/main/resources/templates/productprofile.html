@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Modificar productos</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquey/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+ <div class="jumbotron">
+  <div class="container">
+   <h1>Perfil de producto</h1>
+  <br/>
+   <form action="#" th:action="@{/product/addproducts}" th:object="${product}" method="post">
+   <table class="table">
+<thead>
+<tr>
+<th>Nombre del producto</th>
+<th>Precio</th>
+<th>Descuento</th>
+<th>Descripcion breve del producto</th>
+</tr>
+
+<tbody>
+
+<td th:text=" *{nombre_producto}"></td>
+<td th:text=" *{precio}"></td>
+<td th:text=" *{descuento}"></td>
+<td th:text=" *{descripcion}"></td>
+
+</tbody>
+
+
+
+</thead>
+</table>
+   </form>
+  </div>
+ </div>
+ 
+</body>
+
+</html>

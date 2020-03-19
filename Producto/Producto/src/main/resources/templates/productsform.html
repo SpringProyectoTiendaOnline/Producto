@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Modificar productos</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquey/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet"/>
+</head>
+<body>
+ <div class="jumbotron">
+  <div class="container">
+   <h1>Agrega aquí tus productos</h1>
+  <br/>
+   <form action="#" th:action="@{/product/addproducts}" th:object="${product}" method="post">
+   <input type="hidden" th:field="*{id}"></input>
+    <br/>
+    Nombre: <input type="text" class="form-control" th:field=*{nombre_producto} th:value="${nombre_producto}"> </input>
+   <br/>
+    Precio: <input type="text" class="form-control" th:field=*{precio} th:value="${precio}"> </input>
+    <br/>
+    Descuento: <input type="text" class="form-control" th:field=*{descuento} th:value="${descuento}"> </input>
+    <br/>
+    Descripcion: <input type="text" class="form-control" th:field=*{descripcion} th:value="${descripcion}"></input>
+    <br/>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>   Aceptar
+    </button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">
+     <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>Anular
+   </button>
+   </form>
+  </div>
+ </div>
+ 
+</body>
+
+</html>
